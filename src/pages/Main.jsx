@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import CategoryExhibition from "../components/CategoryExhibition";
 import ProductBrand from "../components/ProductBrand";
 
 const ListFont = styled.p`
