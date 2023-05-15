@@ -47,7 +47,7 @@ const Dropdown = ({ DropDownHandler }) => {
         ooo님, 안녕하세요
       </Link>
       <Link
-        to="/products"
+        to="/products/list"
         onClick={DropDownHandler}
         className="w-full p-1 flex justify-center items-center border-b"
       >

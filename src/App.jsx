@@ -1,4 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { productActions } from "./store/product-slice";
 import Main from "./pages/Main";
 import Error from "./pages/Error";
 import Product from "./pages/Product";
@@ -13,13 +16,24 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Main /> },
       // index -> 부모 라우트가 현재 활성이면 표시되어야 함을 의미 path='' 대신 index로 사용가능!!
-      { path: "products", element: <Product /> },
+      { path: "products/list", element: <Product /> },
       { path: "bookmark", element: <Bookmark /> },
     ],
   },
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+  const fetchData = async () => {
+    const response = await fetch(
+      "http://cozshopping.codestates-seb.link/api/v1/products"
+    );
+    const data = await response.json();
+    dispatch(productActions.storeFetchedData(data));
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <RouterProvider router={router} />
