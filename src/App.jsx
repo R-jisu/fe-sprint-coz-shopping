@@ -30,6 +30,7 @@ function App() {
     );
     const data = await response.json();
     dispatch(productActions.storeFetchedData(data));
+    //4개 랜덤 min aksmef
   };
   useEffect(() => {
     fetchData();

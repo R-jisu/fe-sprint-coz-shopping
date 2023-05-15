@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const StyledHeader = styled.header`
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+  z-index: 5;
 `;
 
 const Header = () => {
