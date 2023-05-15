@@ -9,7 +9,6 @@ const CardDiv = styled.div`
   height: 30rem;
   border-radius: 12px;
   background-color: lightgray;
-  cursor: pointer;
   background-image: url(${(props) => props.imgprop});
   background-size: cover;
   padding: 1.5rem;
@@ -31,17 +30,21 @@ const ModalOverlay = () => {
   return (
     <CardDiv
       imgprop={info.img}
-      className="relative flex items-end"
+      className="relative flex items-end cursor-default"
       onClick={(e) => e.stopPropagation()}
     >
       <AiOutlineClose
         onClick={closeHandler}
         size="1.54rem"
         color="white"
-        className="absolute top-[1rem] right-[1rem]"
+        className="absolute top-[1rem] right-[1rem] cursor-pointer"
       />
       <div className="flex gap-2 items-center">
-        <AiFillStar size="1.5rem" color="#DFDFDFCE" />
+        <AiFillStar
+          className="cursor-pointer"
+          size="1.5rem"
+          color="#DFDFDFCE"
+        />
         <TitleP>{info.title}</TitleP>
       </div>
     </CardDiv>
@@ -55,7 +58,7 @@ const Backdrop = () => {
   };
   return (
     <div
-      className="absolute top-0 left-0 flex justify-center items-center w-screen h-screen bg-white/[0.4] z-10"
+      className="absolute top-0 left-0 flex justify-center items-center w-screen h-screen bg-white/[0.4] z-10 cursor-pointer"
       onClick={closeHandler}
     >
       <ModalOverlay />

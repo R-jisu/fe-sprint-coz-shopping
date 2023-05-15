@@ -20,7 +20,8 @@ export const Card = ({ children, img, id, title }) => {
   const dispatch = useDispatch();
   //Todo 북마크 기능 추가 시 리덕스로 구현
   const [isBookmark, setIsBookmark] = useState(false);
-  const HandleBookmark = () => {
+  const HandleBookmark = (e) => {
+    e.stopPropagation();
     setIsBookmark(!isBookmark);
   };
   const modalHandler = () => {

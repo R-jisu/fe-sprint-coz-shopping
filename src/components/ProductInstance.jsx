@@ -19,6 +19,11 @@ const ProductInstance = ({ info }) => {
     follower,
     id,
   } = info;
+
+  const addCommasToNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   if (type === "Category") {
     return (
       <Card img={image_url} id={id} title={title}>
@@ -42,7 +47,7 @@ const ProductInstance = ({ info }) => {
           <p>{discountPercentage}</p>
         </div>
         <div className="flex justify-end">
-          <p>{price}원</p>
+          <p>{addCommasToNumber(price)}원</p>
         </div>
       </Card>
     );
@@ -55,7 +60,7 @@ const ProductInstance = ({ info }) => {
           <BoldP>관심고객수</BoldP>
         </div>
         <div className="flex justify-end">
-          <p>{follower}</p>
+          <p>{addCommasToNumber(follower)}명</p>
         </div>
       </Card>
     );
