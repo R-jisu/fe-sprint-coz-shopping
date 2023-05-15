@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUI = {
-  modalId: "",
+  isOpen: false,
+  productInfo: {},
   //Todo toast
 };
 
@@ -10,10 +11,12 @@ const UISlice = createSlice({
   initialState: initialUI,
   reducers: {
     openModal(state, action) {
-      state.modalId = action.payload;
+      state.isOpen = true;
+      state.productInfo = action.payload;
     },
     closeModal(state) {
-      state.modalId = "";
+      state.isOpen = false;
+      state.productInfo = {};
     },
   },
 });

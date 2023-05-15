@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { UIActions } from "../store/ui-slice";
 
 const Div = styled.div`
   width: 16.5rem;
@@ -14,14 +16,15 @@ const CardDiv = styled.div`
   background-size: cover;
 `;
 
-export const Card = ({ children, img }) => {
+export const Card = ({ children, img, id, title }) => {
+  const dispatch = useDispatch();
   //Todo 북마크 기능 추가 시 리덕스로 구현
   const [isBookmark, setIsBookmark] = useState(false);
   const HandleBookmark = () => {
     setIsBookmark(!isBookmark);
   };
   const modalHandler = () => {
-    console.log("모달 오픈할 예정");
+    dispatch(UIActions.openModal({ img, id, title }));
   };
   return (
     <Div>
