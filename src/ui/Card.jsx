@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { AiFillStar } from "react-icons/ai";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UIActions } from "../store/ui-slice";
+import Star from "../components/Star";
 
 const Div = styled.div`
   width: 16.5rem;
@@ -18,12 +17,8 @@ const CardDiv = styled.div`
 
 export const Card = ({ children, img, id, title }) => {
   const dispatch = useDispatch();
+
   //Todo 북마크 기능 추가 시 리덕스로 구현
-  const [isBookmark, setIsBookmark] = useState(false);
-  const HandleBookmark = (e) => {
-    e.stopPropagation();
-    setIsBookmark(!isBookmark);
-  };
   const modalHandler = () => {
     dispatch(UIActions.openModal({ img, id, title }));
   };
@@ -34,12 +29,9 @@ export const Card = ({ children, img, id, title }) => {
         className="relative w-full h-full"
         onClick={modalHandler}
       >
-        <AiFillStar
-          onClick={HandleBookmark}
-          color={isBookmark ? "#FFD361" : "#DFDFDF"}
-          size="1.5rem"
-          className="absolute right-[0.75rem] bottom-[0.75rem]"
-        />
+        <div className={`absolute right-[0.75rem] bottom-[0.75rem]`}>
+          <Star id={id} onClick={(e) => e.stopPropagation()} />
+        </div>
       </CardDiv>
       {children}
     </Div>

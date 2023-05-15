@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import { AiFillStar, AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import Star from "../components/Star";
 import { UIActions } from "../store/ui-slice";
 
 const CardDiv = styled.div`
@@ -22,7 +23,6 @@ const TitleP = styled.p`
 
 const ModalOverlay = () => {
   const info = useSelector((state) => state.ui.productInfo);
-  console.log(info);
   const dispatch = useDispatch();
   const closeHandler = () => {
     dispatch(UIActions.closeModal());
@@ -40,11 +40,7 @@ const ModalOverlay = () => {
         className="absolute top-[1rem] right-[1rem] cursor-pointer"
       />
       <div className="flex gap-2 items-center">
-        <AiFillStar
-          className="cursor-pointer"
-          size="1.5rem"
-          color="#DFDFDFCE"
-        />
+        <Star id={info.id} onClick={(e) => e.stopPropagation()} />
         <TitleP>{info.title}</TitleP>
       </div>
     </CardDiv>
