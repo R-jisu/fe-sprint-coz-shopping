@@ -6,7 +6,7 @@ const BoldP = styled.p`
 `;
 
 const ProductInstance = ({ info }) => {
-  //카테고리일 경우
+  //Todo 가격이랑 관객수 중간에 , 추가하기
   const {
     type,
     title,
@@ -17,27 +17,26 @@ const ProductInstance = ({ info }) => {
     discountPercentage,
     price,
     follower,
+    id,
   } = info;
   if (type === "Category") {
     return (
-      <Card img={image_url}>
+      <Card img={image_url} id={id} title={title}>
         <BoldP># {title}</BoldP>
       </Card>
     );
   }
-  //기획적일 경우
   if (type === "Exhibition") {
     return (
-      <Card img={image_url}>
+      <Card img={image_url} id={id} title={title}>
         <BoldP>{title}</BoldP>
         <p>{sub_title}</p>
       </Card>
     );
   }
-  //product 나 brand일 경우
   if (type === "Product") {
     return (
-      <Card img={image_url}>
+      <Card img={image_url} id={id} title={title}>
         <div className="flex justify-between">
           <BoldP>{title}</BoldP>
           <p>{discountPercentage}</p>
@@ -48,10 +47,9 @@ const ProductInstance = ({ info }) => {
       </Card>
     );
   }
-
   if (type === "Brand") {
     return (
-      <Card img={brand_image_url}>
+      <Card img={brand_image_url} id={id} title={brand_name}>
         <div className="flex justify-between">
           <BoldP>{brand_name}</BoldP>
           <BoldP>관심고객수</BoldP>
