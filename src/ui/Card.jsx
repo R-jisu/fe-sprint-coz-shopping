@@ -8,19 +8,28 @@ const Div = styled.div`
 const CardDiv = styled.div`
   height: 13.3rem;
   border-radius: 12px;
-  background-color: purple;
+  background-color: lightgray;
   cursor: pointer;
+  background-image: url(${(props) => props.imgprop});
+  background-size: cover;
 `;
 
-export const Card = ({ children }) => {
+export const Card = ({ children, img }) => {
   //Todo 북마크 기능 추가 시 리덕스로 구현
   const [isBookmark, setIsBookmark] = useState(false);
   const HandleBookmark = () => {
     setIsBookmark(!isBookmark);
   };
+  const modalHandler = () => {
+    console.log("모달 오픈할 예정");
+  };
   return (
     <Div>
-      <CardDiv className="relative w-full h-full">
+      <CardDiv
+        imgprop={img}
+        className="relative w-full h-full"
+        onClick={modalHandler}
+      >
         <AiFillStar
           onClick={HandleBookmark}
           color={isBookmark ? "#FFD361" : "#DFDFDF"}
