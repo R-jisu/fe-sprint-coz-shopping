@@ -30,9 +30,11 @@ function App() {
     );
     const data = await response.json();
     dispatch(productActions.storeFetchedData(data));
-    //4개 랜덤 min aksmef
   };
   useEffect(() => {
+    if (window.localStorage.getItem("bookmark") === null) {
+      window.localStorage.setItem("bookmark", JSON.stringify([]));
+    }
     fetchData();
   }, []);
   return (

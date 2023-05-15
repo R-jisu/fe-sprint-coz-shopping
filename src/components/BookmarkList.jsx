@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import * as Styled from "../style/main.style";
 import ProductInstance from "./ProductInstance";
-const ProductList = () => {
+
+const BookmarkList = () => {
   const [mainList, setMainList] = useState(null);
-  //Todo fetch함수 custom hook으로 만들기
-  const fetchData = async () => {
-    const response = await fetch(
-      "http://cozshopping.codestates-seb.link/api/v1/products?count=4"
-    );
-    const data = await response.json();
-    setMainList(data);
-  };
+  const product = useSelector((state) => state.product.bookmarked);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (product.length !== 0) {
+      setMainList(product.slice(0, 4));
+    }
+  }, [product]);
 
   return (
     <>
-      <Styled.ListFont>상품 리스트</Styled.ListFont>
+      <Styled.ListFont>북마크 리스트</Styled.ListFont>
       {mainList && (
         <Styled.ListUL>
           {mainList.map((item) => {
@@ -34,4 +31,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default BookmarkList;
