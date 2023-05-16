@@ -1,7 +1,7 @@
-const filteringData = ({ type, Data }) => {
-  if (type === "All") return Data;
+const filteringData = ({ type, data }) => {
+  if (type === "All") return data;
   else {
-    const filterArr = Data.filter((el) => el.type === type);
+    const filterArr = data.filter((el) => el.type === type);
     return filterArr;
   }
 };

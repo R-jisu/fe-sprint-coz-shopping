@@ -6,7 +6,7 @@ import ProductInstance from "../components/ProductInstance";
 import filteringData from "../func/filteringData";
 
 const Product = () => {
-  const [Data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [showingData, setShowingData] = useState([]);
   const [page, setPage] = useState(1);
@@ -21,11 +21,11 @@ const Product = () => {
   }, [len]);
 
   useEffect(() => {
-    if (Data.length !== 0) {
-      const filteredData = filteringData({ type, Data });
+    if (data.length !== 0) {
+      const filteredData = filteringData({ type, data });
       setFilteredData(filteredData);
     }
-  }, [Data, type]);
+  }, [data, type]);
 
   useEffect(() => {
     setPage(1);

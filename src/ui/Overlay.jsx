@@ -53,16 +53,16 @@ const ModalOverlay = () => {
 
 const Backdrop = () => {
   const dispatch = useDispatch();
-  // const { openScroll } = useScrollLock();
+  const { openScroll } = useScrollLock();
 
   const closeHandler = () => {
-    // openScroll();
-
+    openScroll();
     dispatch(UIActions.closeModal());
   };
   return (
     <div
-      className="absolute top-0 left-0 flex justify-center items-center w-screen h-screen bg-white/[0.4] z-[999] cursor-pointer overflow-hidden"
+      className="fixed top-0 left-0 flex justify-center items-center w-screen h-screen bg-white/[0.4] z-[999]
+       cursor-pointer"
       onClick={closeHandler}
     >
       <ModalOverlay />
@@ -75,7 +75,8 @@ const Overlay = () => {
     <>
       {ReactDOM.createPortal(
         <Backdrop />,
-        document.getElementById("overlay-root")
+        // document.getElementById("overlay-root")
+        document.getElementById("root")
       )}
     </>
   );
