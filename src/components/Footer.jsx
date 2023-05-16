@@ -19,7 +19,10 @@ const Footer = () => {
   }, [inView]);
 
   return (
-    <FooterDiv ref={ref} className="flex flex-col justify-center items-center">
+    <FooterDiv
+      ref={ref}
+      className="flex flex-col justify-center items-center mt-[1.5rem]"
+    >
       <p>개인정보 처리방침 | 이용 약관</p>
       <p>All rights reserved @ Codestates</p>
       <p>inView 확인하기위한 text입니다 {inView.toString()}</p>
