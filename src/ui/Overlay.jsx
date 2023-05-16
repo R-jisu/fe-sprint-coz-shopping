@@ -1,9 +1,10 @@
 import ReactDOM from "react-dom";
-import { AiFillStar, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Star from "../components/Star";
 import { UIActions } from "../store/ui-slice";
+import useScrollLock from "../hooks/use-scrollLock";
 
 const CardDiv = styled.div`
   width: 46.5rem;
@@ -23,8 +24,11 @@ const TitleP = styled.p`
 
 const ModalOverlay = () => {
   const info = useSelector((state) => state.ui.productInfo);
+  const { openScroll } = useScrollLock();
+
   const dispatch = useDispatch();
   const closeHandler = () => {
+    openScroll();
     dispatch(UIActions.closeModal());
   };
   return (
@@ -49,12 +53,15 @@ const ModalOverlay = () => {
 
 const Backdrop = () => {
   const dispatch = useDispatch();
+  const { openScroll } = useScrollLock();
+
   const closeHandler = () => {
+    openScroll();
     dispatch(UIActions.closeModal());
   };
   return (
     <div
-      className="absolute top-0 left-0 flex justify-center items-center w-screen h-screen bg-white/[0.4] z-10 cursor-pointer"
+      className="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-white/[0.4] z-10 cursor-pointer"
       onClick={closeHandler}
     >
       <ModalOverlay />

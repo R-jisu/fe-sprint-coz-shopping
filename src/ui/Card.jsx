@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { UIActions } from "../store/ui-slice";
 import Star from "../components/Star";
+import useScrollLock from "../hooks/use-scrollLock";
 
 const Div = styled.div`
   width: 16.5rem;
@@ -17,9 +18,11 @@ const CardDiv = styled.div`
 
 export const Card = ({ children, img, id, title }) => {
   const dispatch = useDispatch();
+  const { lockScroll } = useScrollLock();
 
   //Todo 북마크 기능 추가 시 리덕스로 구현
   const modalHandler = () => {
+    lockScroll();
     dispatch(UIActions.openModal({ img, id, title }));
   };
   return (
