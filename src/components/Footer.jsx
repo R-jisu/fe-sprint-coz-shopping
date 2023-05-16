@@ -24,7 +24,6 @@ const Footer = () => {
     >
       <p>개인정보 처리방침 | 이용 약관</p>
       <p>All rights reserved @ Codestates</p>
-      <p>inView 확인하기위한 text입니다 {inView.toString()}</p>
     </FooterDiv>
   );
 };
