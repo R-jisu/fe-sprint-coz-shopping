@@ -20,7 +20,6 @@ const Star = ({ id }) => {
     e.stopPropagation();
     e.preventDefault();
     dispatch(productActions.toggleBookmark(id));
-    localStorage.setItem("scroll", window.scrollY);
   };
 
   return (

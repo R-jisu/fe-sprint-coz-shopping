@@ -4,6 +4,7 @@ import Filter from "../components/Filter";
 import ProductInstance from "../components/ProductInstance";
 
 const Product = () => {
+  const [Data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [showingData, setShowingData] = useState([]);
   const [startIndex, setStartIndex] = useState(12);
@@ -11,28 +12,24 @@ const Product = () => {
   const type = useSelector((state) => state.filter.type);
   const products = useSelector((state) => state.product.product);
   const inView = useSelector((state) => state.footerInview.isBottom);
-  const scroll = window.localStorage.getItem("scroll");
 
   useEffect(() => {
-    if (scroll !== null) {
-      window.localStorage.removeItem("scroll");
-      return;
-    }
-    if (products.length !== 0) {
-      setStartIndex(12);
-      setShowingData([]);
-      if (type === "All") setFilteredData(products);
-      else {
-        const filterArr = products.filter((el) => el.type === type);
-        setFilteredData(filterArr);
-      }
-    }
-  }, [products, type]);
+    if (products.length !== 0) setData(products);
+  }, [products.length]);
+  //Q. products.length 할떄는 스크롤 유지가 되는데 구조분해할당했을 때는 왜 유지가 안될 까
 
   useEffect(() => {
-    if (filteredData.length !== 0) {
-      setShowingData([...filteredData.slice(0, 12)]);
+    setStartIndex(12);
+    setShowingData([]);
+    if (type === "All") setFilteredData(Data);
+    else {
+      const filterArr = products.filter((el) => el.type === type);
+      setFilteredData(filterArr);
     }
+  }, [Data, type]);
+
+  useEffect(() => {
+    setShowingData([...filteredData.slice(0, 12)]);
   }, [filteredData]);
 
   useEffect(() => {
@@ -54,7 +51,7 @@ const Product = () => {
         setIsLoading(false);
       }, 1000);
     }
-  }, [isLoading, inView, type]);
+  }, [inView, type]);
 
   return (
     <div className="flex flex-col items-center mx-[4.75rem]">
