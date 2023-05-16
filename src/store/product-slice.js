@@ -16,9 +16,11 @@ const productSlice = createSlice({
           if (bookmarkArr.includes(el.id)) return { ...el, isBookmark: true };
           else return el;
         });
-        state.bookmarked = action.payload.filter((el) =>
-          bookmarkArr.includes(el.id)
-        );
+        action.payload.map((el) => {
+          if (bookmarkArr.includes(el.id)) {
+            state.bookmarked[bookmarkArr.findIndex((id) => id === el.id)] = el;
+          }
+        });
       } else {
         state.product = action.payload;
       }
@@ -30,6 +32,7 @@ const productSlice = createSlice({
         bookmarkArr = [];
       }
       const index = state.product.findIndex((el) => el.id === action.payload);
+
       if (bookmarkArr.includes(action.payload)) {
         state.product[index] = { ...state.product[index], isBookmark: false };
         const bookmarkArr = JSON.parse(window.localStorage.getItem("bookmark"));
