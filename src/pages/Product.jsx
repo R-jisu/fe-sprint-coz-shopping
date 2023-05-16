@@ -1,5 +1,11 @@
+import Filter from "../components/Filter";
+
 const Product = () => {
-  return <div>Product</div>;
+  return (
+    <>
+      <Filter />
+    </>
+  );
 };
 
 export default Product;

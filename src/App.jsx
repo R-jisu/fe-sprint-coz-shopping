@@ -7,6 +7,7 @@ import Error from "./pages/Error";
 import Product from "./pages/Product";
 import Bookmark from "./pages/Bookmark";
 import Root from "./pages/Root";
+import Filter from "./components/Filter";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,14 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Main /> },
       // index -> 부모 라우트가 현재 활성이면 표시되어야 함을 의미 path='' 대신 index로 사용가능!!
-      { path: "products/list", element: <Product /> },
-      { path: "bookmark", element: <Bookmark /> },
+      {
+        path: "products/list",
+        element: <Product />,
+      },
+      {
+        path: "bookmark",
+        element: <Bookmark />,
+      },
     ],
   },
 ]);
