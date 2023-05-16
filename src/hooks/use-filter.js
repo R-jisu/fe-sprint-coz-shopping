@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Filter from "../components/Filter";
-import ProductInstance from "../components/ProductInstance";
 
-const Bookmark = () => {
+const useFilter = () => {
   const [Data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [showingData, setShowingData] = useState([]);
@@ -52,19 +50,8 @@ const Bookmark = () => {
       }, 1000);
     }
   }, [inView, type]);
-  return (
-    <div className="flex flex-col items-center mx-[4.75rem]">
-      <Filter />
-      <ul className="flex flex-wrap gap-[1.5rem] justify-center">
-        {filteredData &&
-          showingData.length > 0 &&
-          showingData.map((product) => (
-            <ProductInstance key={product.id} info={product} />
-          ))}
-      </ul>
-      {isLoading && <p>상품을 불러오는 중입니다</p>}
-    </div>
-  );
+
+  return <div>use-inifiteScroll</div>;
 };
 
-export default Bookmark;
+export default useFilter;
