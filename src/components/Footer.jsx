@@ -9,7 +9,6 @@ const FooterDiv = styled.div`
   color: #888888;
   font-size: 0.75rem;
 `;
-
 const Footer = () => {
   const dispatch = useDispatch();
   const [ref, inView] = useInView();

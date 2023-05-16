@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Filter from "../components/Filter";
 import Loading from "../components/Loading";
 import ProductInstance from "../components/ProductInstance";
+import filteringData from "../func/filteringData";
 
 const Product = () => {
   const [Data, setData] = useState([]);
@@ -20,10 +21,9 @@ const Product = () => {
   }, [len]);
 
   useEffect(() => {
-    if (type === "All") setFilteredData(Data);
-    else {
-      const filterArr = products.filter((el) => el.type === type);
-      setFilteredData(filterArr);
+    if (Data.length !== 0) {
+      const filteredData = filteringData({ type, Data });
+      setFilteredData(filteredData);
     }
   }, [Data, type]);
 
