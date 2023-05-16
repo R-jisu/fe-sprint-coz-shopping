@@ -20,7 +20,6 @@ export const Card = ({ children, img, id, title }) => {
   const dispatch = useDispatch();
   const { lockScroll } = useScrollLock();
 
-  //Todo 북마크 기능 추가 시 리덕스로 구현
   const modalHandler = () => {
     lockScroll();
     dispatch(UIActions.openModal({ img, id, title }));

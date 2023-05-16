@@ -11,8 +11,13 @@ const Product = () => {
   const type = useSelector((state) => state.filter.type);
   const products = useSelector((state) => state.product.product);
   const inView = useSelector((state) => state.footerInview.isBottom);
+  const scroll = window.localStorage.getItem("scroll");
 
   useEffect(() => {
+    if (scroll !== null) {
+      window.localStorage.removeItem("scroll");
+      return;
+    }
     if (products.length !== 0) {
       setStartIndex(12);
       setShowingData([]);
