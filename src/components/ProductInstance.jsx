@@ -44,7 +44,7 @@ const ProductInstance = ({ info }) => {
       <Card img={image_url} id={id} title={title}>
         <div className="flex justify-between">
           <BoldP>{title}</BoldP>
-          <BoldP>{discountPercentage}%</BoldP>
+          <BoldP className="text-[#452CDD]">{discountPercentage}%</BoldP>
         </div>
         <div className="flex justify-end">
           <p>{addCommasToNumber(price)}원</p>
