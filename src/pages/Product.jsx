@@ -28,11 +28,13 @@ const Product = () => {
   }, [Data, type]);
 
   useEffect(() => {
-    console.log(filteredData, page);
+    setPage(1);
+  }, [type]);
+
+  useEffect(() => {
     setShowingData([...filteredData.slice(0, 12 * page)]);
   }, [filteredData, page]);
 
-  //
   useEffect(() => {
     if (
       showingData.length >= filteredData.length &&
@@ -48,7 +50,7 @@ const Product = () => {
         setIsLoading(false);
       }, 1000);
     }
-  }, [inView, type]);
+  }, [inView]);
 
   return (
     <div className="flex flex-col items-center mx-[4.75rem]">
