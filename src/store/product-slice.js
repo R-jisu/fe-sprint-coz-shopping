@@ -19,8 +19,9 @@ const productSlice = createSlice({
           else return el;
         });
         action.payload.map((el) => {
-          if (bookmarkArr.includes(el.id)) {
-            state.bookmarked[bookmarkArr.findIndex((id) => id === el.id)] = el;
+          const findIndex = bookmarkArr.findIndex((id) => id === el.id);
+          if (findIndex !== -1) {
+            state.bookmarked[findIndex] = el;
           }
         });
       } else {
