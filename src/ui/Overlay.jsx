@@ -61,7 +61,8 @@ const Backdrop = () => {
   };
   return (
     <div
-      className="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-white/[0.4] z-10 cursor-pointer"
+      className="fixed top-0 left-0 flex justify-center items-center w-screen h-screen bg-white/[0.4] z-[999] 
+       cursor-pointer overflow-hidden pb-[10px]"
       onClick={closeHandler}
     >
       <ModalOverlay />
@@ -74,7 +75,8 @@ const Overlay = () => {
     <>
       {ReactDOM.createPortal(
         <Backdrop />,
-        document.getElementById("overlay-root")
+        // document.getElementById("overlay-root")
+        document.getElementById("root")
       )}
     </>
   );

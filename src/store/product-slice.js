@@ -3,6 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialProduct = {
   product: [],
   bookmarked: [],
+  type: "All",
+  // filteredData: [],
+  // filteredBookmarkedData: [],
 };
 
 const productSlice = createSlice({
@@ -48,6 +51,15 @@ const productSlice = createSlice({
         window.localStorage.setItem("bookmark", JSON.stringify(bookmarkArr));
         state.bookmarked.unshift(state.product[index]);
       }
+    },
+    setFilter(state, action) {
+      state.type = action.payload;
+      // state.filteredData = state.product.filter(
+      //   (el) => el.type === action.payload
+      // );
+      // state.filteredBookmarkedData = state.bookmarked.filter(
+      //   (el) => el.type === action.payload
+      // );
     },
   },
 });

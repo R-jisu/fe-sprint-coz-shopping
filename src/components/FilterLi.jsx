@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { filterActions } from "../store/filter-slice";
+import { productActions } from "../store/product-slice";
 
 const FilterLi = ({ src, text, type }) => {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ const FilterLi = ({ src, text, type }) => {
     <li
       className="flex flex-col items-center justify-center cursor-pointer"
       onClick={() => {
-        dispatch(filterActions.setFilter(type));
+        dispatch(productActions.setFilter(type));
       }}
     >
       <img src={src} alt="all" />
