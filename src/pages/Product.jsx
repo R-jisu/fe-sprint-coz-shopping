@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
 import { useSelector } from "react-redux";
 import Filter from "../components/Filter";
 import ProductInstance from "../components/ProductInstance";
@@ -9,20 +8,14 @@ const Product = () => {
   const [showingData, setShowingData] = useState([]);
   const [startIndex, setStartIndex] = useState(12);
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingMessage, setLoadingMessage] =
-    useState("상품을 불러오는 중입니다");
   const type = useSelector((state) => state.filter.type);
   const products = useSelector((state) => state.product.product);
   const inView = useSelector((state) => state.footerInview.isBottom);
 
   useEffect(() => {
-    if (filteredData.length !== 0) {
-      setShowingData([...filteredData.slice(0, 12)]);
-    }
-  }, [filteredData]);
-
-  useEffect(() => {
     if (products.length !== 0) {
+      setStartIndex(12);
+      setShowingData([]);
       if (type === "All") setFilteredData(products);
       else {
         const filterArr = products.filter((el) => el.type === type);
@@ -32,10 +25,20 @@ const Product = () => {
   }, [products, type]);
 
   useEffect(() => {
-    if (startIndex >= 100) {
-      setLoadingMessage("모든 상품을 불러왔습니다.");
+    if (filteredData.length !== 0) {
+      setShowingData([...filteredData.slice(0, 12)]);
     }
-    if (inView && !isLoading && filteredData.length !== 0) {
+  }, [filteredData]);
+
+  useEffect(() => {
+    if (
+      showingData.length >= filteredData.length &&
+      showingData.length &&
+      filteredData.length
+    ) {
+      return;
+    }
+    if (inView && !isLoading && showingData.length !== 0) {
       setIsLoading(true);
       setTimeout(() => {
         setShowingData((prev) => [
@@ -44,9 +47,9 @@ const Product = () => {
         ]);
         setStartIndex((prev) => prev + 12);
         setIsLoading(false);
-      }, 2000);
+      }, 1000);
     }
-  }, [isLoading, inView]);
+  }, [isLoading, inView, type]);
 
   return (
     <div className="flex flex-col items-center mx-[4.75rem]">
@@ -58,7 +61,7 @@ const Product = () => {
             <ProductInstance key={product.id} info={product} />
           ))}
       </ul>
-      {isLoading && <p>{loadingMessage}</p>}
+      {isLoading && <p>상품을 불러오는 중입니다</p>}
     </div>
   );
 };
