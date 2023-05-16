@@ -16,7 +16,7 @@ const Star = ({ id }) => {
     }
   }, [products]);
 
-  const bookmarkHandelr = (e) => {
+  const bookmarkHandler = (e) => {
     e.stopPropagation();
     e.preventDefault();
     dispatch(productActions.toggleBookmark(id));
@@ -24,7 +24,7 @@ const Star = ({ id }) => {
 
   return (
     <AiFillStar
-      onClick={bookmarkHandelr}
+      onClick={bookmarkHandler}
       className="cursor-pointer"
       size="1.5rem"
       color={isBookmark ? "#FFD361" : "#DFDFDF"}

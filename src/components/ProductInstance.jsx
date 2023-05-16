@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import addCommasToNumber from "../func/addCommasToNum";
 import { Card } from "../ui/Card";
 
 const BoldP = styled.p`
@@ -19,10 +20,6 @@ const ProductInstance = ({ info }) => {
     follower,
     id,
   } = info;
-
-  const addCommasToNumber = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
 
   if (type === "Category") {
     return (

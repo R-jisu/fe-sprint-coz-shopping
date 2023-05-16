@@ -4,8 +4,6 @@ const initialProduct = {
   product: [],
   bookmarked: [],
   type: "All",
-  // filteredData: [],
-  // filteredBookmarkedData: [],
 };
 
 const productSlice = createSlice({
@@ -13,8 +11,9 @@ const productSlice = createSlice({
   initialState: initialProduct,
   reducers: {
     storeFetchedData(state, action) {
+      //Todo Hoonpt에게 질문하기
       const bookmarkArr = JSON.parse(window.localStorage.getItem("bookmark"));
-      if (bookmarkArr.length > 0 || bookmarkArr !== null) {
+      if (bookmarkArr !== null) {
         state.product = action.payload.map((el) => {
           if (bookmarkArr.includes(el.id)) return { ...el, isBookmark: true };
           else return el;
@@ -35,11 +34,10 @@ const productSlice = createSlice({
         bookmarkArr = [];
       }
       const index = state.product.findIndex((el) => el.id === action.payload);
-
-      if (bookmarkArr.includes(action.payload)) {
+      const findIndex = bookmarkArr.findIndex((el) => el === action.payload);
+      if (findIndex !== -1) {
         state.product[index] = { ...state.product[index], isBookmark: false };
         const bookmarkArr = JSON.parse(window.localStorage.getItem("bookmark"));
-        const findIndex = bookmarkArr.findIndex((el) => el === action.payload);
         bookmarkArr.splice(findIndex, 1);
         window.localStorage.setItem("bookmark", JSON.stringify(bookmarkArr));
         state.bookmarked = state.bookmarked.filter(
@@ -54,12 +52,6 @@ const productSlice = createSlice({
     },
     setFilter(state, action) {
       state.type = action.payload;
-      // state.filteredData = state.product.filter(
-      //   (el) => el.type === action.payload
-      // );
-      // state.filteredBookmarkedData = state.bookmarked.filter(
-      //   (el) => el.type === action.payload
-      // );
     },
   },
 });
