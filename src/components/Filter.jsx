@@ -7,17 +7,17 @@ import brand from "../assets/brand.svg";
 import FilterLi from "./FilterLi";
 const Filter = () => {
   const filterArr = [
-    { src: all, text: "전체" },
-    { src: product, text: "상품" },
-    { src: category, text: "카테고리" },
-    { src: exhibition, text: "기획전" },
-    { src: brand, text: "브랜드" },
+    { src: all, text: "전체", type: "All" },
+    { src: product, text: "상품", type: "Product" },
+    { src: category, text: "카테고리", type: "Category" },
+    { src: exhibition, text: "기획전", type: "Exhibition" },
+    { src: brand, text: "브랜드", type: "Brand" },
   ];
   return (
     <>
-      <ul className="flex gap-[2.5rem] mt-[1.5rem] mb-[0.5rem]">
+      <ul className="flex gap-[2.5rem] mt-[1.5rem] mb-[1.66rem]">
         {filterArr.map((el) => (
-          <FilterLi key={el.text} src={el.src} text={el.text} />
+          <FilterLi key={el.text} src={el.src} text={el.text} type={el.type} />
         ))}
       </ul>
     </>
