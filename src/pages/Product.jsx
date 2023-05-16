@@ -11,12 +11,12 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(false);
   const type = useSelector((state) => state.filter.type);
   const products = useSelector((state) => state.product.product);
+  const { length: len } = products;
   const inView = useSelector((state) => state.footerInview.isBottom);
 
   useEffect(() => {
-    if (products.length !== 0) setData(products);
-  }, [products.length]);
-  //Q. products.length 할떄는 스크롤 유지가 되는데 구조분해할당했을 때는 왜 유지가 안될 까
+    if (len !== 0) setData(products);
+  }, [len]);
 
   useEffect(() => {
     setStartIndex(12);
