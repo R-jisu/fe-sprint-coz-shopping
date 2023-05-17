@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { productActions } from "./store/product-slice";
 import Main from "./pages/Main";
@@ -30,11 +30,15 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
   const fetchData = async () => {
-    const response = await fetch(
-      "http://cozshopping.codestates-seb.link/api/v1/products"
-    );
-    const data = await response.json();
-    dispatch(productActions.storeFetchedData(data));
+    try {
+      const response = await fetch(
+        "http://cozshopping.codestates-seb.link/api/v1/products"
+      );
+      const data = await response.json();
+      dispatch(productActions.storeFetchedData(data));
+    } catch (err) {
+      return <Error msg={err.message} />;
+    }
   };
   useEffect(() => {
     fetchData();

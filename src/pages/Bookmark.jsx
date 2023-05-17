@@ -4,6 +4,7 @@ import Filter from "../components/Filter";
 import Loading from "../components/Loading";
 import ProductInstance from "../components/ProductInstance";
 import filteringData from "../func/filteringData";
+import { NumberOfData } from "../values/constValue";
 
 const Bookmark = () => {
   const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ const Bookmark = () => {
   }, [type]);
 
   useEffect(() => {
-    setShowingData([...filteredData.slice(0, 12 * page)]);
+    setShowingData([...filteredData.slice(0, NumberOfData * page)]);
   }, [filteredData, page]);
 
   useEffect(() => {
