@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import addCommasToNumber from "../func/addCommasToNum";
 import { BoldP } from "../style/main.style";
 import { Card } from "../ui/Card";

@@ -30,11 +30,15 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
   const fetchData = async () => {
-    const response = await fetch(
-      "http://cozshopping.codestates-seb.link/api/v1/products"
-    );
-    const data = await response.json();
-    dispatch(productActions.storeFetchedData(data));
+    try {
+      const response = await fetch(
+        "http://cozshopping.codestates-seb.link/api/v1/products"
+      );
+      const data = await response.json();
+      dispatch(productActions.storeFetchedData(data));
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   useEffect(() => {
     fetchData();
