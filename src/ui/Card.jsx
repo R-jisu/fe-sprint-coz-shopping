@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { UIActions } from "../store/ui-slice";
 import Star from "../components/Star";
 import useScrollLock from "../hooks/use-scrollLock";

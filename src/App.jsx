@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { productActions } from "./store/product-slice";
 import Main from "./pages/Main";
@@ -37,7 +37,7 @@ function App() {
       const data = await response.json();
       dispatch(productActions.storeFetchedData(data));
     } catch (err) {
-      console.log(err.message);
+      return <Error msg={err.message} />;
     }
   };
   useEffect(() => {

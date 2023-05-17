@@ -4,7 +4,8 @@ import Filter from "../components/Filter";
 import Loading from "../components/Loading";
 import ProductInstance from "../components/ProductInstance";
 import filteringData from "../func/filteringData";
-//Todo 매직넘버 const value 처리
+import { NumberOfData } from "../values/constValue";
+
 const Product = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -32,7 +33,7 @@ const Product = () => {
   }, [type]);
 
   useEffect(() => {
-    setShowingData([...filteredData.slice(0, 12 * page)]);
+    setShowingData([...filteredData.slice(0, NumberOfData * page)]);
   }, [filteredData, page]);
 
   useEffect(() => {
