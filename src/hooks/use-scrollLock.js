@@ -1,13 +1,11 @@
-import { useCallback } from "react";
-
 const useScrollLock = () => {
-  const lockScroll = useCallback(() => {
+  const lockScroll = () => {
     document.body.style.overflow = "hidden";
-  }, []);
+  };
 
-  const openScroll = useCallback(() => {
+  const openScroll = () => {
     document.body.style.removeProperty("overflow");
-  }, []);
+  };
 
   return { lockScroll, openScroll };
 };
