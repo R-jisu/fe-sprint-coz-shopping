@@ -4,7 +4,7 @@ import Filter from "../components/Filter";
 import Loading from "../components/Loading";
 import ProductInstance from "../components/ProductInstance";
 import filteringData from "../func/filteringData";
-
+//Todo 매직넘버 const value 처리
 const Product = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);

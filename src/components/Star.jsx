@@ -18,8 +18,13 @@ const Star = ({ id }) => {
 
   const bookmarkHandler = (e) => {
     e.stopPropagation();
-    e.preventDefault();
-    dispatch(productActions.toggleBookmark(id));
+    if (isBookmark) {
+      dispatch(productActions.removeBookmark(id));
+      //북마크 추가 toast
+    } else {
+      dispatch(productActions.addBookmark(id));
+      //북마크 제거 toast
+    }
   };
 
   return (

@@ -12,3 +12,7 @@ export const ListUL = styled.ul`
   gap: 1.5rem;
   list-style: none;
 `;
+
+export const BoldP = styled.p`
+  font-weight: 800;
+`;

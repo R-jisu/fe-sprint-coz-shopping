@@ -1,13 +1,9 @@
 import styled from "styled-components";
 import addCommasToNumber from "../func/addCommasToNum";
+import { BoldP } from "../style/main.style";
 import { Card } from "../ui/Card";
 
-const BoldP = styled.p`
-  font-weight: 800;
-`;
-
 const ProductInstance = ({ info }) => {
-  //Todo 가격이랑 관객수 중간에 , 추가하기
   const {
     type,
     title,
