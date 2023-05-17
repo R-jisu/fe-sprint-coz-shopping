@@ -10,3 +10,7 @@ export const toastProp = {
   progress: undefined,
   theme: "light",
 };
+
+export const toastTime = 3;
+
+export const toastLimit = 4;
