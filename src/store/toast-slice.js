@@ -11,8 +11,7 @@ const toastSlice = createSlice({
   reducers: {
     enQue(state, action) {
       if (state.toastQue.length > toastLimit) {
-        console.log("리밋이 넘었어요");
-        state.toastQue.splice(0, state.toastQue.length - toastLimit);
+        state.toastQue.splice(0, state.toastQue.length - toastLimit + 1);
       }
       state.toastQue.push(action.payload.action);
     },

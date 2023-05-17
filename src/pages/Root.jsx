@@ -16,19 +16,6 @@ const Root = () => {
       <Footer />
       {modalIsOpen && <Overlay />}
       <ToastContainer />
-      {/* <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        limit={5}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      /> */}
     </>
   );
 };

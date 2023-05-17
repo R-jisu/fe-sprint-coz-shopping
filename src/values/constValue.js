@@ -11,6 +11,6 @@ export const toastProp = {
   theme: "light",
 };
 
-export const toastTime = 10;
+export const toastTime = 3;
 
-export const toastLimit = 5;
+export const toastLimit = 4;
