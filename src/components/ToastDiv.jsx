@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { styled } from "styled-components";
 import { toastActions } from "../store/toast-slice";
 import { BoldP } from "../style/main.style";
+import { toastTime } from "../values/constValue";
 
 const Toast = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -19,7 +20,11 @@ const ToastDiv = ({ action }) => {
     setTimeout(() => {
       setFadeAnimaton("animate__fadeOut");
       dispatch(toastActions.deQue());
-    }, 5000);
+    }, toastTime * 1000);
+
+    //cleanup 함수에 timer 지우면?
+    //unmount 직전에 실행됨
+    // 5초 뒤 함수 걸기  DeQue toastContainer 셀렉터가 감지 다시 렌더링 이때 언마운트가 됐겠지
   }, []);
 
   return (
