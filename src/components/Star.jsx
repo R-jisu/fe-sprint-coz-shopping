@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../store/product-slice";
@@ -16,15 +17,20 @@ const Star = ({ id }) => {
     }
   }, [products]);
 
-  const bookmarkHandelr = (e) => {
+  const bookmarkHandler = (e) => {
     e.stopPropagation();
-    e.preventDefault();
-    dispatch(productActions.toggleBookmark(id));
+    if (isBookmark) {
+      dispatch(productActions.removeBookmark(id));
+      //북마크 추가 toast 렌더링
+    } else {
+      dispatch(productActions.addBookmark(id));
+      //북마크 제거 toast 렌더링
+    }
   };
 
   return (
     <AiFillStar
-      onClick={bookmarkHandelr}
+      onClick={bookmarkHandler}
       className="cursor-pointer"
       size="1.5rem"
       color={isBookmark ? "#FFD361" : "#DFDFDF"}

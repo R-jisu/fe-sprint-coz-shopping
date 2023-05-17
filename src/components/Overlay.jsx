@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import Star from "../components/Star";
+import Star from "./Star";
 import { UIActions } from "../store/ui-slice";
 import useScrollLock from "../hooks/use-scrollLock";
 
