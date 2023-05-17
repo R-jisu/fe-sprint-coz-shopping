@@ -30,6 +30,10 @@ const productSlice = createSlice({
     },
     addBookmark(state, action) {
       let bookmarkArr = JSON.parse(window.localStorage.getItem("bookmark"));
+      if (!bookmarkArr) {
+        window.localStorage.setItem("bookmark", JSON.stringify([]));
+        bookmarkArr = [];
+      }
       const index = state.product.findIndex((el) => el.id === action.payload);
       state.product[index] = { ...state.product[index], isBookmark: true };
       bookmarkArr.unshift(action.payload);
@@ -38,10 +42,6 @@ const productSlice = createSlice({
     },
     removeBookmark(state, action) {
       let bookmarkArr = JSON.parse(window.localStorage.getItem("bookmark"));
-      if (!bookmarkArr) {
-        window.localStorage.setItem("bookmark", JSON.stringify([]));
-        bookmarkArr = [];
-      }
       const index = state.product.findIndex((el) => el.id === action.payload);
       state.product[index] = { ...state.product[index], isBookmark: false };
       const findIndex = bookmarkArr.findIndex((el) => el === action.payload);
