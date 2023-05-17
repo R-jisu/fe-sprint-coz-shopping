@@ -18,14 +18,12 @@ const Bookmark = () => {
   const inView = useSelector((state) => state.footerInview.isBottom);
 
   useEffect(() => {
-    if (len !== 0) setData(products);
+    setData(products);
   }, [len]);
 
   useEffect(() => {
-    if (data.length !== 0) {
-      const filteredData = filteringData({ type, data });
-      setFilteredData(filteredData);
-    }
+    const filteredData = filteringData({ type, data });
+    setFilteredData(filteredData);
   }, [data, type]);
 
   useEffect(() => {
