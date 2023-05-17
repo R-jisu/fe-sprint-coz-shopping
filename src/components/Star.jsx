@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../store/product-slice";
+import { toast } from "react-toastify";
+import { toastProp } from "../values/constValue";
+import "react-toastify/dist/ReactToastify.css";
 
 const Star = ({ id }) => {
   const [isBookmark, setIsBookmark] = useState(false);
@@ -21,10 +23,10 @@ const Star = ({ id }) => {
     e.stopPropagation();
     if (isBookmark) {
       dispatch(productActions.removeBookmark(id));
-      //북마크 추가 toast 렌더링
+      toast("상품이 북마크에서 제거되었습니다.", toastProp);
     } else {
       dispatch(productActions.addBookmark(id));
-      //북마크 제거 toast 렌더링
+      toast("상품이 북마크에 추가되었습니다.", toastProp);
     }
   };
 
