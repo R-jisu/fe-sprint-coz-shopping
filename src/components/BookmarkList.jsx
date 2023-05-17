@@ -6,11 +6,8 @@ import ProductInstance from "./ProductInstance";
 const BookmarkList = () => {
   const [mainList, setMainList] = useState(null);
   const product = useSelector((state) => state.product.bookmarked);
-
   useEffect(() => {
-    if (product.length !== 0) {
-      setMainList(product.slice(0, 4));
-    }
+    setMainList(product.slice(0, 4));
   }, [product]);
 
   return (
