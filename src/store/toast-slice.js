@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  toastQue: {},
+  toastQue: [],
 };
 
 const toastSlice = createSlice({
@@ -9,13 +9,10 @@ const toastSlice = createSlice({
   initialState,
   reducers: {
     enQue(state, action) {
-      state.toastQue[action.payload.id] = {
-        id: action.payload.id,
-        isRemove: action.payload.isRemove,
-      };
+      state.toastQue.push(action.payload.action);
     },
-    deQue(state, action) {
-      delete state.toastQue[action.payload];
+    deQue(state) {
+      state.toastQue.shift();
     },
   },
 });

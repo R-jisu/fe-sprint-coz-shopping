@@ -5,6 +5,7 @@ import { productActions } from "../store/product-slice";
 import { toast } from "react-toastify";
 import { toastProp } from "../values/constValue";
 import "react-toastify/dist/ReactToastify.css";
+import { toastActions } from "../store/toast-slice";
 
 const Star = ({ id }) => {
   const [isBookmark, setIsBookmark] = useState(false);
@@ -23,10 +24,12 @@ const Star = ({ id }) => {
     e.stopPropagation();
     if (isBookmark) {
       dispatch(productActions.removeBookmark(id));
-      toast("상품이 북마크에서 제거되었습니다.", toastProp);
+      dispatch(toastActions.enQue({ action: "remove" }));
+      // toast("상품이 북마크에서 제거되었습니다.", toastProp);
     } else {
       dispatch(productActions.addBookmark(id));
-      toast("상품이 북마크에 추가되었습니다.", toastProp);
+      dispatch(toastActions.enQue({ action: "add" }));
+      // toast("상품이 북마크에 추가되었습니다.", toastProp);
     }
   };
 
