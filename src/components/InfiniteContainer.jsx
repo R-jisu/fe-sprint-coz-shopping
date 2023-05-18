@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 import ProductInstance from "../components/ProductInstance";
 import filteringData from "../func/filteringData";
 import { NumberOfData } from "../values/constValue";
+import Nothing from "./Nothing";
 
 const InfiniteContainer = ({ data }) => {
   const [filteredData, setFilteredData] = useState([]);
@@ -53,6 +54,7 @@ const InfiniteContainer = ({ data }) => {
           showingData.map((product) => (
             <ProductInstance key={product.id} info={product} />
           ))}
+        {!showingData.length && <Nothing />}
       </ul>
       {isLoading && <Loading />}
     </div>

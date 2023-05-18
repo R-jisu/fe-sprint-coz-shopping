@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import * as Styled from "../style/main.style";
+import Nothing from "./Nothing";
 import ProductInstance from "./ProductInstance";
 
 const BookmarkList = () => {
-  const [mainList, setMainList] = useState(null);
+  const [mainList, setMainList] = useState([]);
   const product = useSelector((state) => state.product.bookmarked);
   useEffect(() => {
     setMainList(product.slice(0, 4));
@@ -13,7 +14,7 @@ const BookmarkList = () => {
   return (
     <>
       <Styled.ListFont>북마크 리스트</Styled.ListFont>
-      {mainList && (
+      {!!mainList.length && (
         <Styled.ListUL>
           {mainList.map((item) => {
             return (
@@ -24,6 +25,7 @@ const BookmarkList = () => {
           })}
         </Styled.ListUL>
       )}
+      {!mainList.length && <Nothing />}
     </>
   );
 };
