@@ -5,7 +5,7 @@ const ToastContainer = () => {
   const que = useSelector((state) => state.toast.toastQue);
   return (
     <div className="fixed bottom-5 right-5">
-      {que.length &&
+      {que.length !== 0 &&
         que.map((toast, idx) => <ToastDiv key={idx} action={toast} />)}
     </div>
   );
