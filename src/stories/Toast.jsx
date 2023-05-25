@@ -13,14 +13,14 @@ const Toast = styled.div`
   padding: 15px 21px;
 `;
 
-const ToastDiv = ({ primary, bookmark, label, ...props }) => {
+const ToastDiv = ({ primary, action, label, ...props }) => {
   const mode = primary
     ? "storybook-toast--primary"
     : "storybook-toast--secondary";
 
   return (
     <Toast className={mode} {...props}>
-      <AiFillStar color={bookmark === "remove" ? "#DFDFDF" : "#FFD361"} />
+      <AiFillStar color={action === "remove" ? "#DFDFDF" : "#FFD361"} />
       <BoldP>{label}</BoldP>
     </Toast>
   );

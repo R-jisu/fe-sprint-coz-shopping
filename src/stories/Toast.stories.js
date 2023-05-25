@@ -3,9 +3,10 @@ export default {
   title: "Toast",
   component: ToastDiv,
 };
+
 export const Primary = {
   argTypes: {
-    bookmark: {
+    action: {
       options: ["add", "remove"],
       control: { type: "radio" },
     },
@@ -18,14 +19,14 @@ export const Primary = {
 
 export const AddBookmark = {
   args: {
-    bookmark: "add",
+    action: "add",
     label: "상품이 북마크에 추가되었습니다.",
   },
 };
 
 export const RemoveBookmark = {
   args: {
-    bookmark: "remove",
+    action: "remove",
     label: "상품이 북마크에서 삭제되었습니다.",
   },
 };
