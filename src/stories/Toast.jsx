@@ -19,10 +19,7 @@ const ToastDiv = ({ primary, bookmark, label, ...props }) => {
     : "storybook-toast--secondary";
 
   return (
-    <Toast
-      className={`flex justify-center items-center mt-3 bg-white ${mode}`}
-      {...props}
-    >
+    <Toast className={mode} {...props}>
       <AiFillStar color={bookmark === "remove" ? "#DFDFDF" : "#FFD361"} />
       <BoldP>{label}</BoldP>
     </Toast>

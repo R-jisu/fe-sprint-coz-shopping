@@ -1,17 +1,31 @@
 import ToastDiv from "./Toast";
 export default {
-  title: "Example/Toast",
+  title: "Toast",
   component: ToastDiv,
+};
+export const Primary = {
   argTypes: {
     bookmark: {
       options: ["add", "remove"],
       control: { type: "radio" },
     },
   },
-};
-export const Primary = {
   args: {
     primary: true,
     label: "상품이 북마크에 추가되었습니다.",
+  },
+};
+
+export const AddBookmark = {
+  args: {
+    bookmark: "add",
+    label: "상품이 북마크에 추가되었습니다.",
+  },
+};
+
+export const RemoveBookmark = {
+  args: {
+    bookmark: "remove",
+    label: "상품이 북마크에서 삭제되었습니다.",
   },
 };
